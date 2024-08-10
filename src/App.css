@@ -61,6 +61,11 @@ input{
   border-radius: 10px;
 }
 
+#settingsBar{
+  background-color: white;
+  border-left: 2px ridge black;
+}
+
 #topBar{
   width: 100%;
   height: fit-content;
