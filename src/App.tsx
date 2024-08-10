@@ -1,34 +1,17 @@
 import "./App.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { library } from "@fortawesome/fontawesome-svg-core";
-import {
-  faHand,
-  faPen,
-  faEraser,
-  faGear,
-} from "@fortawesome/free-solid-svg-icons";
-import TopBar from "./componets/topbar";
 
-library.add(faHand, faPen, faEraser, faGear);
+import TopBar from "./componets/topbar";
+import { useState } from "react";
+import SideBar from "./componets/sidebar";
 
 function App() {
   const currentColor = "#ff0000";
-
+  const [currentTool, setCurrentTool] = useState(0);
   return (
     <>
       <TopBar currentColor={currentColor} />
       <div id="center">
-        <div id="sideBar">
-          <button onClick={() => console.log("hand")}>
-            <FontAwesomeIcon icon="hand" color="black" fontSize={30} />
-          </button>
-          <button onClick={() => console.log("hand")}>
-            <FontAwesomeIcon icon="eraser" color="black" fontSize={30} />
-          </button>
-          <button onClick={() => console.log("hand")}>
-            <FontAwesomeIcon icon="pen" color="black" fontSize={30} />
-          </button>
-        </div>
+        <SideBar selectedIndex={currentTool} setSelected={setCurrentTool} />
         <div id="drawingArea"></div>
       </div>
     </>
