@@ -6,14 +6,10 @@ type props = {
 
 const TopBar = (props: props) => {
   console.log(props);
+
   return (
     <div id="topBar">
-      <input
-        type="color"
-        style={{ opacity: 0, width: 100, position: "absolute" }}
-      />
-      <button>clickme</button>
-
+      <input type="color" className="colorPicker" />
       <input></input>
       <div style={{ flex: 1 }}></div>
       <button style={{ marginRight: 10 }}>
