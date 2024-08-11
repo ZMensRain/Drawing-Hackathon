@@ -97,8 +97,20 @@ const SettingsPanel = ({
           }}
         ></input>
       </div>
-      <div>
-        <label className="unselectable">Background Color</label>
+      <div
+        className="secondary-container"
+        style={{
+          alignItems: "stretch",
+          display: "flex",
+          gap: 10,
+
+          padding: 5,
+          borderRadius: 10,
+        }}
+      >
+        <label className="unselectable" style={{}}>
+          Background Color
+        </label>
         <input
           type="color"
           className="colorPicker"

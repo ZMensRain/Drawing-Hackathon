@@ -22,6 +22,9 @@
 
 * {
   color: var(--foreground);
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 .light {
@@ -57,7 +60,6 @@
 }
 
 #drawingArea {
-  z-index: -1;
   flex: 1;
 }
 
@@ -68,30 +70,9 @@ button {
   border-radius: 10px;
   border-width: 0;
 }
+
 button:hover {
   background-color: rgba(156, 156, 156, 0.123);
-}
-
-input {
-  border-radius: 10px;
-  color: var(--foreground);
-  background-color: transparent;
-  text-align: center;
-  border: 1px solid #eeeeee;
-}
-
-input[type="color" i]::-moz-color-swatch {
-  height: 100%;
-  width: 100%;
-}
-.colorPicker {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 125px;
-  border: 1px solid #eeeeee;
-  height: 100%;
-  border-radius: 10px;
-  padding: 0px;
 }
 
 #settingsBar {
@@ -107,14 +88,15 @@ input[type="color" i]::-moz-color-swatch {
 #topBar {
   width: 100%;
   height: fit-content;
+  min-height: 20;
   padding: 6px 0px 6px 0px;
   background-color: var(--secondary);
   border-bottom: 2px ridge black;
   flex-direction: row;
   display: flex;
-  z-index: 1;
   align-items: "center";
   vertical-align: middle;
+  gap: 20px;
 }
 
 .unselectable {
@@ -125,4 +107,38 @@ input[type="color" i]::-moz-color-swatch {
   -ms-user-select: none;
   user-select: none;
   color: var(--foreground);
+}
+button {
+  padding: 5px;
+}
+
+input {
+  border-radius: 10px;
+  color: var(--foreground);
+  background-color: transparent;
+  text-align: center;
+  border: 1px solid #eeeeee;
+}
+
+.secondary-container {
+  background-color: var(--secondary);
+}
+
+.colorPicker {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 100px;
+  height: auto;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+.colorPicker::-webkit-color-swatch {
+  border-radius: 15px;
+  border: none;
+}
+.colorPicker::-moz-color-swatch {
+  border-radius: 15px;
+  border: none;
 }

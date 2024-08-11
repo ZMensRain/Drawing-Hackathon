@@ -12,10 +12,11 @@ const TopBar = (props: props) => {
   return (
     <div id="topBar">
       <input
-        type="color"
         className="colorPicker"
+        type="color"
         value={props.currentColor}
         onChange={(event) => props.onChooseColor?.(event.target.value)}
+        style={{ marginLeft: 70 }}
       />
       <input
         value={props.currentPixel}
