@@ -35,7 +35,7 @@ function App() {
   }, [animate, scope, showSettings]);
 
   return (
-    <>
+    <div className={settings.theme} style={{ height: "100%" }}>
       <TopBar
         currentColor={settings.brushColor}
         currentPixel={settings.brushSize}
@@ -82,7 +82,7 @@ function App() {
           />
         </div>
       </div>
-    </>
+    </div>
   );
 }
 

@@ -4,11 +4,40 @@
   display: flex;
   height: 100%;
   margin: 0;
+
+  --background: white;
+  --foreground: black;
+  --secondary: rgb(230, 230, 230);
+  background-color: var(--background);
+  color: var(--foreground);
+}
+
+@media (prefers-color-scheme: dark) {
+  #root {
+    --foreground: white;
+    --background: black;
+    --secondary: rgb(34, 34, 34);
+  }
+}
+
+* {
+  color: var(--foreground);
+}
+
+.light {
+  --background: white;
+  --foreground: black;
+  --secondary: rgb(230, 230, 230);
+}
+.dark {
+  --foreground: white;
+  --background: black;
+  --secondary: rgb(34, 34, 34);
 }
 
 #sideBar {
   width: fit-content;
-  background-color: white;
+  background-color: var(--secondary);
   height: 100%;
   justify-content: flex-start;
   align-items: center;
@@ -28,7 +57,6 @@
 }
 
 #drawingArea {
-  background-color: white;
   z-index: -1;
   flex: 1;
 }
@@ -46,21 +74,29 @@ button:hover {
 
 input {
   border-radius: 10px;
-  color: black;
+  color: var(--foreground);
   background-color: transparent;
   text-align: center;
   border: 1px solid #eeeeee;
 }
 
+input[type="color" i]::-moz-color-swatch {
+  height: 100%;
+  width: 100%;
+}
 .colorPicker {
+  -webkit-appearance: none;
+  appearance: none;
   width: 125px;
   border: 1px solid #eeeeee;
   height: 100%;
   border-radius: 10px;
+  padding: 0px;
 }
 
 #settingsBar {
-  background-color: white;
+  background-color: var(--background);
+  color: var(--foreground);
   border-left: 2px ridge black;
   display: flex;
   flex-direction: column;
@@ -72,7 +108,7 @@ input {
   width: 100%;
   height: fit-content;
   padding: 6px 0px 6px 0px;
-  background-color: white;
+  background-color: var(--secondary);
   border-bottom: 2px ridge black;
   flex-direction: row;
   display: flex;
@@ -88,4 +124,5 @@ input {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  color: var(--foreground);
 }

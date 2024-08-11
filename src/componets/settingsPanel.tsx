@@ -35,7 +35,6 @@ const SettingsPanel = ({
       <button
         onClick={onThemeButtonPressed}
         style={{
-          color: "black",
           fontSize: 20,
           fontWeight: "bold",
           alignItems: "center",
@@ -108,7 +107,7 @@ const SettingsPanel = ({
         />
       </div>
       <div style={{ flex: 2 }}></div>
-      <h1 className="unselectable">Credits</h1>
+      <h1>Credits</h1>
       <div style={{ flex: 1 }}>TODO</div>
     </div>
   );

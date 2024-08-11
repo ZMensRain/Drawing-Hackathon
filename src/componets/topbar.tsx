@@ -23,7 +23,7 @@ const TopBar = (props: props) => {
       />
       <div style={{ flex: 1 }} />
       <button style={{ marginRight: 10 }} onClick={props.onSettingsPressed}>
-        <FontAwesomeIcon icon="gear" color="black" fontSize={20} />
+        <FontAwesomeIcon icon="gear" fontSize={20} />
       </button>
     </div>
   );
