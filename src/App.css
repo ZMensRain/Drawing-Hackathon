@@ -62,9 +62,10 @@ input {
 #settingsBar {
   background-color: white;
   border-left: 2px ridge black;
-  width: 0px;
   display: flex;
   flex-direction: column;
+  gap: 15px;
+  overflow: hidden;
 }
 
 #topBar {
@@ -78,4 +79,13 @@ input {
   z-index: 1;
   align-items: "center";
   vertical-align: middle;
+}
+
+.unselectable {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }

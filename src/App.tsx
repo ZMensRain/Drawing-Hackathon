@@ -3,26 +3,32 @@ import "./App.css";
 import TopBar from "./componets/topbar";
 import { useState, useEffect } from "react";
 import SideBar from "./componets/sidebar";
+import SettingsPanel from "./componets/settingsPanel";
 
 import { useAnimate } from "framer-motion";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { settings } from "./models/settings";
 
 function App() {
-  const currentColor = "#ff0000";
-  const currentPixelSize = 12;
-  const [currentTool, setCurrentTool] = useState(0);
+  const [settings, setSettings] = useState<settings>({
+    backgroundColor: "#ffffff",
+    brushColor: "#000000",
+    brushSize: 12,
+    dysfunctionalRange: [1, 60],
+    theme: "light",
+    tool: 0,
+    popups: true,
+  });
 
   const [showSettings, setShowSettings] = useState(false);
 
   const [scope, animate] = useAnimate();
 
-  console.log("aaaaa");
   useEffect(() => {
     const enterAnimation = async () => {
       if (showSettings) {
-        animate(scope.current, { width: 300 }, { duration: 0.2 });
+        animate(scope.current, { x: 300 }, { duration: 0.2 });
       } else {
-        animate(scope.current, { width: 0 }, { duration: 0.1 });
+        animate(scope.current, { x: 0 }, { duration: 0.1 });
       }
     };
     enterAnimation();
@@ -31,32 +37,49 @@ function App() {
   return (
     <>
       <TopBar
-        currentColor={currentColor}
-        currentPixel={currentPixelSize}
-        onSettingsPressed={() => {
-          setShowSettings(!showSettings);
-        }}
+        currentColor={settings.brushColor}
+        currentPixel={settings.brushSize}
+        onSettingsPressed={() => setShowSettings(!showSettings)}
+        onChooseColor={(color) =>
+          setSettings({ ...settings, brushColor: color })
+        }
+        onPixelChange={(brushSize) =>
+          setSettings({
+            ...settings,
+            brushSize: Number(brushSize.replace("px", "")),
+          })
+        }
       />
       <div id="center">
-        <SideBar selectedIndex={currentTool} setSelected={setCurrentTool} />
+        <SideBar
+          selectedIndex={settings.tool}
+          setSelected={(toolIndex) =>
+            setSettings({ ...settings, tool: toolIndex })
+          }
+        />
         <div id="drawingArea"></div>
-        <div id="settingsBar" ref={scope}>
-          <div style={{ margin: 10 }}>
-            <button
-              style={{
-                color: "black",
-                fontSize: 20,
-                fontWeight: "bold",
-                alignItems: "center",
-                gap: 4,
-                display: "flex",
-              }}
-            >
-              Theme
-              <FontAwesomeIcon icon="sun" />
-            </button>
-            <label>Dysfunctional Frequency</label>
-          </div>
+        <div ref={scope} id="settingsBar">
+          <SettingsPanel
+            values={settings.dysfunctionalRange}
+            backgroundColor={settings.backgroundColor}
+            popups={settings.popups}
+            theme={settings.theme}
+            setValues={(range) =>
+              setSettings({ ...settings, dysfunctionalRange: range })
+            }
+            onBackgroundColorChange={(color) =>
+              setSettings({ ...settings, backgroundColor: color })
+            }
+            onPopupsChange={(value) =>
+              setSettings({ ...settings, popups: value })
+            }
+            onThemeButtonPressed={() =>
+              setSettings({
+                ...settings,
+                theme: settings.theme == "light" ? "dark" : "light",
+              })
+            }
+          />
         </div>
       </div>
     </>
