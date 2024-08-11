@@ -9,8 +9,6 @@ type props = {
 };
 
 const TopBar = (props: props) => {
-  console.log(props);
-
   return (
     <div id="topBar">
       <input
