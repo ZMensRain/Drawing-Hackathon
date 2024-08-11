@@ -16,6 +16,7 @@ const SettingsPanel = ({
   values,
   popups,
   backgroundColor,
+  theme,
   setValues,
   onThemeButtonPressed,
   onPopupsChange,
@@ -43,12 +44,11 @@ const SettingsPanel = ({
         }}
       >
         Theme
-        <FontAwesomeIcon icon="sun" />
+        <FontAwesomeIcon icon={theme == "light" ? "sun" : "moon"} />
       </button>
 
       <label className="unselectable">Dysfunctional Frequency</label>
       <Range
-        label="Select your value"
         step={1}
         min={1}
         max={60}

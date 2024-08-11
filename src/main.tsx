@@ -10,9 +10,10 @@ import {
   faEraser,
   faGear,
   faSun,
+  faMoon,
 } from "@fortawesome/free-solid-svg-icons";
 
-library.add(faHand, faPen, faEraser, faGear, faSun);
+library.add(faHand, faPen, faEraser, faGear, faSun, faMoon);
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
