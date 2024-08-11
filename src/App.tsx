@@ -20,13 +20,9 @@ function App() {
   useEffect(() => {
     const enterAnimation = async () => {
       if (showSettings) {
-        animate(scope.current, { width: [0, 300] }, { duration: 0.2 });
+        animate(scope.current, { width: 300 }, { duration: 0.2 });
       } else {
-        animate(
-          scope.current,
-          { width: [scope.animations[0].state ?? 300, 0] },
-          { duration: 0.1 }
-        );
+        animate(scope.current, { width: 0 }, { duration: 0.1 });
       }
     };
     enterAnimation();
