@@ -6,7 +6,7 @@
   margin: 0;
 }
 
-#sideBar{
+#sideBar {
   width: fit-content;
   background-color: white;
   height: 100%;
@@ -17,10 +17,9 @@
   gap: 20px;
   padding: 10px;
   flex-direction: column;
-
 }
 
-#center{
+#center {
   height: 100%;
   flex: 1;
   display: flex;
@@ -28,45 +27,47 @@
   overflow: hidden;
 }
 
-#drawingArea{
+#drawingArea {
   background-color: white;
   z-index: -1;
-  flex:1;
+  flex: 1;
 }
 
-button{
+button {
   background-color: transparent;
   height: fit-content;
   width: fit-content;
   border-radius: 10px;
   border-width: 0;
 }
-button:hover{
+button:hover {
   background-color: rgba(156, 156, 156, 0.123);
 }
 
-input{
+input {
   border-radius: 10px;
-  margin-left: 100px;
   color: black;
   background-color: transparent;
   text-align: center;
-  border: 1px solid #EEEEEE;
+  border: 1px solid #eeeeee;
 }
 
-.colorPicker{
+.colorPicker {
   width: 125px;
-  border: 1px solid #EEEEEE;
-  height:100%;
+  border: 1px solid #eeeeee;
+  height: 100%;
   border-radius: 10px;
 }
 
-#settingsBar{
+#settingsBar {
   background-color: white;
   border-left: 2px ridge black;
+  width: 0px;
+  display: flex;
+  flex-direction: column;
 }
 
-#topBar{
+#topBar {
   width: 100%;
   height: fit-content;
   padding: 6px 0px 6px 0px;

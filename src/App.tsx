@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import SideBar from "./componets/sidebar";
 
 import { useAnimate } from "framer-motion";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function App() {
   const currentColor = "#ff0000";
@@ -43,7 +44,24 @@ function App() {
       <div id="center">
         <SideBar selectedIndex={currentTool} setSelected={setCurrentTool} />
         <div id="drawingArea"></div>
-        <div id="settingsBar" ref={scope}></div>
+        <div id="settingsBar" ref={scope}>
+          <div style={{ margin: 10 }}>
+            <button
+              style={{
+                color: "black",
+                fontSize: 20,
+                fontWeight: "bold",
+                alignItems: "center",
+                gap: 4,
+                display: "flex",
+              }}
+            >
+              Theme
+              <FontAwesomeIcon icon="sun" />
+            </button>
+            <label>Dysfunctional Frequency</label>
+          </div>
+        </div>
       </div>
     </>
   );
