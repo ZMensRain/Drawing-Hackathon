@@ -1,13 +1,12 @@
 #root {
-  margin: 0 auto;
-  flex-direction: column;
-  display: flex;
-  height: 100%;
-  margin: 0;
-
   --background: white;
   --foreground: black;
   --secondary: rgb(230, 230, 230);
+  --topBarHeight: 45px;
+  margin: 0 auto;
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
   background-color: var(--background);
   color: var(--foreground);
 }
@@ -52,15 +51,14 @@
 }
 
 #center {
-  height: 100%;
-  flex: 1;
+  height: calc(100% - var(--topBarHeight));
   display: flex;
   flex-direction: row;
-  overflow: hidden;
 }
 
 #drawingArea {
   flex: 1;
+  height: 100%;
 }
 
 button {
@@ -87,7 +85,7 @@ button:hover {
 
 #topBar {
   width: 100%;
-  height: fit-content;
+  height: 45px;
   min-height: 20;
   padding: 6px 0px 6px 0px;
   background-color: var(--secondary);
