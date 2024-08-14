@@ -1,13 +1,13 @@
 import "./App.css";
 
-import TopBar from "./componets/topbar";
+import TopBar from "./components/topbar";
 import { useState, useEffect } from "react";
-import SideBar from "./componets/sidebar";
-import SettingsPanel from "./componets/settingsPanel";
+import SideBar from "./components/sidebar";
+import SettingsPanel from "./components/settingsPanel";
 
 import { useAnimate } from "framer-motion";
 import { settings } from "./models/settings";
-import CanvasDrawing from "./componets/CanvasDrawing";
+import CanvasDrawing from "./components/drawingArea";
 
 function App() {
   const [settings, setSettings] = useState<settings>({
