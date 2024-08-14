@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 type props = { backgroundColor: string };
 
@@ -11,6 +11,17 @@ const CanvasDrawing = (props: props) => {
     canvas.width = canvas.scrollWidth;
     canvas.height = canvas.scrollHeight;
   });
+
+  // Feature not bug draws background over drawings when background color changes
+  // TODO test that this only gets called when background color changes
+  useEffect(() => {
+    const canvas = document.getElementById("canvas") as HTMLCanvasElement;
+    if (canvas == null) return;
+    const ctx = canvas.getContext("2d");
+    if (ctx == null) return;
+    ctx.fillStyle = props.backgroundColor;
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+  }, [props.backgroundColor]);
 
   return (
     <canvas
