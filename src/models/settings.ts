@@ -3,7 +3,7 @@ type settings = {
   brushSize: number;
   brushColor: string;
   tool: number;
-  dysfunctionalRange: number[];
+  dysfunctionalModifier: number;
   backgroundColor: string;
   popups: boolean;
 };

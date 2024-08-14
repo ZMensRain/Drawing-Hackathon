@@ -14,7 +14,7 @@ function App() {
     backgroundColor: "#ffffff",
     brushColor: "#000000",
     brushSize: 12,
-    dysfunctionalRange: [1, 60],
+    dysfunctionalModifier: 60,
     theme: "light",
     tool: 0,
     popups: true,
@@ -71,12 +71,12 @@ function App() {
           >
             <div ref={scope} id="settingsBar" style={{ height: "100%" }}>
               <SettingsPanel
-                values={settings.dysfunctionalRange}
+                dysfunctionalModifier={settings.dysfunctionalModifier}
                 backgroundColor={settings.backgroundColor}
                 popups={settings.popups}
                 theme={settings.theme}
                 setValues={(range) =>
-                  setSettings({ ...settings, dysfunctionalRange: range })
+                  setSettings({ ...settings, dysfunctionalModifier: range[0] })
                 }
                 onBackgroundColorChange={(color) =>
                   setSettings({ ...settings, backgroundColor: color })

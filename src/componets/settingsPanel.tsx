@@ -2,7 +2,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Range } from "react-range";
 
 type props = {
-  values: number[];
+  dysfunctionalModifier: number;
   popups: boolean;
   backgroundColor: string;
   theme: "light" | "dark";
@@ -13,7 +13,7 @@ type props = {
 };
 
 const SettingsPanel = ({
-  values,
+  dysfunctionalModifier,
   popups,
   backgroundColor,
   theme,
@@ -51,7 +51,7 @@ const SettingsPanel = ({
         step={1}
         min={1}
         max={60}
-        values={values}
+        values={[dysfunctionalModifier]}
         onChange={(values) => setValues?.(values)}
         renderTrack={({ props, children }) => (
           <div
@@ -61,11 +61,9 @@ const SettingsPanel = ({
               height: 13,
               width: "100%",
 
-              background: `linear-gradient(to right,#e7e0ec 0%, #e7e0ec ${
-                (values[0] / 60) * 100
-              }%,#2f27ce ${(values[0] / 60) * 100}%,#2f27ce ${
-                (values[1] / 60) * 100
-              }%,#e7e0ec ${(values[1] / 60) * 100}%,#e7e0ec 100% )`,
+              background: `linear-gradient(to right,#2f27ce ${
+                (dysfunctionalModifier / 60) * 100
+              }%,#e7e0ec ${(dysfunctionalModifier / 60) * 100}%,#e7e0ec 100% )`,
               borderRadius: 10,
             }}
           >
