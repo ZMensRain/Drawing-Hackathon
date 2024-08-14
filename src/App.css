@@ -97,6 +97,29 @@ button:hover {
   gap: 20px;
 }
 
+#brushSizeInput {
+  border-radius: 10px;
+  border: 3px solid #eeeeee;
+  overflow: hidden;
+
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+}
+#brushSizeInput div {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  background-color: #eeeeee;
+  align-content: center;
+  text-align: center;
+  vertical-align: middle;
+  min-width: 38px;
+  font-size: 14px;
+  color: black;
+  width: 100%;
+}
+
 .unselectable {
   -webkit-touch-callout: none;
   -webkit-user-select: none;
@@ -111,11 +134,16 @@ button {
 }
 
 input {
-  border-radius: 10px;
+  border-radius: 0;
   color: var(--foreground);
   background-color: transparent;
-  text-align: center;
-  border: 1px solid #eeeeee;
+  text-align: right;
+  border: none;
+  height: 100%;
+  width: fit-content;
+}
+input:focus {
+  outline: none;
 }
 
 .secondary-container {

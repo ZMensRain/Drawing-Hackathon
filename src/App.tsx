@@ -47,7 +47,7 @@ function App() {
         onPixelChange={(brushSize) =>
           setSettings({
             ...settings,
-            brushSize: Number(brushSize.replace("px", "")),
+            brushSize: Number(brushSize),
           })
         }
       />
