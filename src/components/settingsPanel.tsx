@@ -95,6 +95,7 @@ const SettingsPanel = ({
           }}
         ></input>
       </div>
+
       <div
         className="secondary-container"
         style={{
@@ -116,7 +117,26 @@ const SettingsPanel = ({
           onChange={(event) => onBackgroundColorChange?.(event.target.value)}
         />
       </div>
+
       <div style={{ flex: 2 }}></div>
+      <div style={{ justifyContent: "center", display: "flex" }}>
+        <button
+          id="saveImageButton"
+          onClick={() => {
+            const canvas = document.getElementById(
+              "canvas"
+            ) as HTMLCanvasElement;
+            const image = canvas
+              .toDataURL("image/png")
+              .replace("image/png", "image/octet-stream"); // here is the most important part because if you dont replace you will get a DOM 18 exception.
+
+            window.location.href = image;
+          }}
+        >
+          Save Image
+        </button>
+      </div>
+
       <h1>Credits</h1>
       <div style={{ flex: 1 }}>TODO</div>
     </div>
