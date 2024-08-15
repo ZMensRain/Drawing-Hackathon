@@ -37,6 +37,30 @@ function App() {
     enterAnimation();
   }, [animate, scope, showSettings]);
 
+  useEffect(() => {
+    const changeBrushSize = () => {
+      const rangeFactor = settings.dysfunctionalModifier;
+      const randomBrushSize = Math.floor(
+        Math.random() * rangeFactor + 5 // Random brush size between 5 and the rangeFactor
+      );
+
+      setSettings((prevSettings) => ({
+        ...prevSettings,
+        brushSize: randomBrushSize,
+      }));
+
+      const randomInterval = Math.floor(
+        Math.random() * (1000 - 100 / rangeFactor) + 100
+      );
+
+      setTimeout(changeBrushSize, randomInterval); // Call recursively with a varying interval
+    };
+
+    changeBrushSize(); // Initial call
+
+    return () => clearTimeout(); // Cleanup on unmount
+  }, [settings.dysfunctionalModifier]);
+
   return (
     <settingsContext.Provider
       value={{ settings: settings, setSettings: setSettings }}
