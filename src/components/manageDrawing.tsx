@@ -51,18 +51,18 @@ const ManageDrawing = () => {
     }
     return () => canvas.removeEventListener("mousemove", fn);
   }, [settings]);
-  const updateBackgroundColor = (color: string) => {
+
+  //Updates background color when it is changed
+  useEffect(() => {
     const canvas: HTMLCanvasElement = document.getElementById(
       "canvas"
     ) as HTMLCanvasElement;
     if (canvas == null) return;
     const ctx = canvas.getContext("2d");
     if (ctx == null) return;
-    ctx.fillStyle = color;
+    ctx.fillStyle = settings.backgroundColor;
     ctx.fillRect(0, 0, canvas.width, canvas.height);
-  };
-
-  updateBackgroundColor(settings.backgroundColor);
+  }, [settings.backgroundColor]);
 
   return null;
 };
