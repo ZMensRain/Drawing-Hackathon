@@ -1,26 +1,32 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { settingsContext } from "../context/settingsContext";
 
 const ManageDrawing = () => {
+  const [offset, setOffset] = useState({ x: 0, y: 0 });
+
   const settings = useContext(settingsContext).settings;
   useEffect(() => {
     const canvas: HTMLCanvasElement = document.getElementById(
       "canvas"
     ) as HTMLCanvasElement;
     let isRandomizingOffset = false;
-    const offset = { x: 0, y: 0 };
+
     const randomizeOffset = () => {
       isRandomizingOffset = true;
-
       setTimeout(() => {
-        offset.x =
-          Math.random() *
-            (settings.dysfunctionalModifier - -settings.dysfunctionalModifier) +
-          -settings.dysfunctionalModifier;
-        offset.y =
-          Math.random() *
-            (settings.dysfunctionalModifier - -settings.dysfunctionalModifier) +
-          -settings.dysfunctionalModifier;
+        setOffset({
+          x:
+            Math.random() *
+              (settings.dysfunctionalModifier -
+                -settings.dysfunctionalModifier) +
+            -settings.dysfunctionalModifier,
+          y:
+            Math.random() *
+              (settings.dysfunctionalModifier -
+                -settings.dysfunctionalModifier) +
+            -settings.dysfunctionalModifier,
+        });
+
         isRandomizingOffset = false;
       }, (61 - settings.dysfunctionalModifier) * 1000);
     };
