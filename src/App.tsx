@@ -8,6 +8,7 @@ import SettingsPanel from "./components/settingsPanel";
 import { useAnimate } from "framer-motion";
 import { settings } from "./models/settings";
 import CanvasDrawing from "./components/drawingArea";
+import { settingsContext } from "./context/settingsContext";
 
 function App() {
   const [settings, setSettings] = useState<settings>({
@@ -36,66 +37,74 @@ function App() {
   }, [animate, scope, showSettings]);
 
   return (
-    <div className={settings.theme} style={{ height: "100%", width: "100%" }}>
-      <TopBar
-        currentColor={settings.brushColor}
-        currentPixel={settings.brushSize}
-        onSettingsPressed={() => setShowSettings(!showSettings)}
-        onChooseColor={(color) =>
-          setSettings({ ...settings, brushColor: color })
-        }
-        onPixelChange={(brushSize) =>
-          setSettings({
-            ...settings,
-            brushSize: Number(brushSize),
-          })
-        }
-      />
-      <div id="center">
-        <SideBar
-          selectedIndex={settings.tool}
-          setSelected={(toolIndex) =>
-            setSettings({ ...settings, tool: toolIndex })
+    <settingsContext.Provider
+      value={{ settings: settings, setSettings: setSettings }}
+    >
+      <div className={settings.theme} style={{ height: "100%", width: "100%" }}>
+        <TopBar
+          currentColor={settings.brushColor}
+          currentPixel={settings.brushSize}
+          onSettingsPressed={() => setShowSettings(!showSettings)}
+          onChooseColor={(color) =>
+            setSettings({ ...settings, brushColor: color })
           }
+          onPixelChange={(brushSize) => {
+            console.log(brushSize);
+            setSettings({
+              ...settings,
+              brushSize: Number(brushSize),
+            });
+          }}
         />
-        <div id="drawingArea">
-          <CanvasDrawing backgroundColor={settings.backgroundColor} />
-          <div
-            style={{
-              position: "absolute",
-              top: 45,
-              right: 0,
-              bottom: 0,
-              overflow: "hidden",
-            }}
-          >
-            <div ref={scope} id="settingsBar" style={{ height: "100%" }}>
-              <SettingsPanel
-                dysfunctionalModifier={settings.dysfunctionalModifier}
-                backgroundColor={settings.backgroundColor}
-                popups={settings.popups}
-                theme={settings.theme}
-                setValues={(range) =>
-                  setSettings({ ...settings, dysfunctionalModifier: range[0] })
-                }
-                onBackgroundColorChange={(color) =>
-                  setSettings({ ...settings, backgroundColor: color })
-                }
-                onPopupsChange={(value) =>
-                  setSettings({ ...settings, popups: value })
-                }
-                onThemeButtonPressed={() =>
-                  setSettings({
-                    ...settings,
-                    theme: settings.theme == "light" ? "dark" : "light",
-                  })
-                }
-              />
+        <div id="center">
+          <SideBar
+            selectedIndex={settings.tool}
+            setSelected={(toolIndex) =>
+              setSettings({ ...settings, tool: toolIndex })
+            }
+          />
+          <div id="drawingArea">
+            <CanvasDrawing />
+            <div
+              style={{
+                position: "absolute",
+                top: 45,
+                right: 0,
+                bottom: 0,
+                overflow: "hidden",
+              }}
+            >
+              <div ref={scope} id="settingsBar" style={{ height: "100%" }}>
+                <SettingsPanel
+                  dysfunctionalModifier={settings.dysfunctionalModifier}
+                  backgroundColor={settings.backgroundColor}
+                  popups={settings.popups}
+                  theme={settings.theme}
+                  setValues={(range) =>
+                    setSettings({
+                      ...settings,
+                      dysfunctionalModifier: range[0],
+                    })
+                  }
+                  onBackgroundColorChange={(color) =>
+                    setSettings({ ...settings, backgroundColor: color })
+                  }
+                  onPopupsChange={(value) =>
+                    setSettings({ ...settings, popups: value })
+                  }
+                  onThemeButtonPressed={() =>
+                    setSettings({
+                      ...settings,
+                      theme: settings.theme == "light" ? "dark" : "light",
+                    })
+                  }
+                />
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </settingsContext.Provider>
   );
 }
 
