@@ -10,6 +10,7 @@ import { settings } from "./models/settings";
 import CanvasDrawing from "./components/drawingArea";
 import { settingsContext } from "./context/settingsContext";
 import ManageDrawing from "./components/manageDrawing";
+import Eraser from "./components/eraser";
 
 function App() {
   const [settings, setSettings] = useState<settings>({
@@ -102,6 +103,7 @@ function App() {
               </div>
             </div>
             <ManageDrawing />
+            <Eraser />
           </div>
         </div>
       </div>
