@@ -82,6 +82,11 @@ button:hover {
   gap: 15px;
   overflow: hidden;
 }
+#saveImageButton {
+  color: rgb(47, 39, 206);
+  font-weight: bold;
+  border: 1px solid var(--foreground);
+}
 
 #topBar {
   width: 100%;
