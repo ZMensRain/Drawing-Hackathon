@@ -9,6 +9,7 @@ import { useAnimate } from "framer-motion";
 import { settings } from "./models/settings";
 import CanvasDrawing from "./components/drawingArea";
 import { settingsContext } from "./context/settingsContext";
+import ManageDrawing from "./components/manageDrawing";
 
 function App() {
   const [settings, setSettings] = useState<settings>({
@@ -49,7 +50,6 @@ function App() {
             setSettings({ ...settings, brushColor: color })
           }
           onPixelChange={(brushSize) => {
-            console.log(brushSize);
             setSettings({
               ...settings,
               brushSize: Number(brushSize),
@@ -101,6 +101,7 @@ function App() {
                 />
               </div>
             </div>
+            <ManageDrawing />
           </div>
         </div>
       </div>
