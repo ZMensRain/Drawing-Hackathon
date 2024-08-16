@@ -45,7 +45,10 @@ function App() {
       const brushSizeChange = Math.floor(Math.random() * (5 - -5) + -5);
       setSettings((prevSettings) => ({
         ...prevSettings,
-        brushSize: Math.abs(prevSettings.brushSize + brushSizeChange),
+        brushSize:
+          Math.abs(prevSettings.brushSize + brushSizeChange) === 0
+            ? 1
+            : Math.abs(prevSettings.brushSize + brushSizeChange),
       }));
 
       const randomInterval = Math.floor(
