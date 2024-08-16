@@ -14,7 +14,7 @@ const SideBar = (props: props) => {
               : "transparent",
         }}
       >
-        <FontAwesomeIcon icon="hand" fontSize={30} />
+        <FontAwesomeIcon icon="pen" fontSize={30} />
       </button>
       <button
         onClick={() => props.setSelected(1)}
@@ -26,17 +26,6 @@ const SideBar = (props: props) => {
         }}
       >
         <FontAwesomeIcon icon="eraser" fontSize={30} />
-      </button>
-      <button
-        onClick={() => props.setSelected(2)}
-        style={{
-          backgroundColor:
-            props.selectedIndex == 2
-              ? "rgba(156, 156, 156, 0.123)"
-              : "transparent",
-        }}
-      >
-        <FontAwesomeIcon icon="pen" fontSize={30} />
       </button>
     </div>
   );

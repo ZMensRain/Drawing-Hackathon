@@ -36,6 +36,7 @@ const ManageDrawing = () => {
 
       if (ctx === null) return;
       if (e.buttons !== 1) return;
+      if (settings.tool !== 0) return;
 
       ctx.beginPath();
       ctx.arc(

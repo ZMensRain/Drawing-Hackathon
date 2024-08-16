@@ -2,7 +2,7 @@ import { useContext, useEffect } from "react";
 import { settingsContext } from "../context/settingsContext";
 
 const Eraser = () => {
-  const { settings } = useContext(settingsContext);
+  const { settings, setSettings } = useContext(settingsContext);
 
   useEffect(() => {
     if (settings.tool === 1) {
@@ -14,8 +14,9 @@ const Eraser = () => {
       if (ctx == null) return;
       ctx.fillStyle = settings.backgroundColor;
       ctx.fillRect(0, 0, canvas.width, canvas.height);
+      setSettings({ ...settings, tool: 0 });
     }
-  }, [settings.backgroundColor, settings.tool]);
+  }, [setSettings, settings, settings.backgroundColor, settings.tool]);
 
   return null;
 };
