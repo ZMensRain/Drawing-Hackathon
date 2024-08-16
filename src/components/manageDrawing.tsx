@@ -13,13 +13,15 @@ const ManageDrawing = () => {
 
     const randomizeOffset = () => {
       isRandomizingOffset = true;
+
+      const interval = (101 - settings.dysfunctionalModifier) * 500;
       setTimeout(() => {
         setOffset({
           x: Math.random() * (5 - -5) + -5,
           y: Math.random() * (5 - -5) + -5,
         });
         isRandomizingOffset = false;
-      }, (101 - settings.dysfunctionalModifier) * 1000);
+      }, interval);
     };
 
     function fn(e: MouseEvent) {
@@ -29,6 +31,8 @@ const ManageDrawing = () => {
       const ctx = canvas.getContext("2d");
 
       if (!isRandomizingOffset) randomizeOffset();
+
+      // console.log(offset);
 
       if (ctx === null) return;
       if (e.buttons !== 1) return;
