@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Range } from "react-range";
 
-type props = {
+type Props = {
   dysfunctionalModifier: number;
   popups: boolean;
   backgroundColor: string;
@@ -21,7 +21,28 @@ const SettingsPanel = ({
   onThemeButtonPressed,
   onPopupsChange,
   onBackgroundColorChange,
-}: props) => {
+}: Props) => {
+  const handleSaveImage = () => {
+    const canvas = document.getElementById("canvas") as HTMLCanvasElement;
+    if (!canvas) {
+      console.error("Canvas element not found");
+      return;
+    }
+    try {
+      const image = canvas
+        .toDataURL("image/png")
+        .replace("image/png", "image/octet-stream"); // Replace MIME type
+
+      // Create a temporary link element to trigger download
+      const link = document.createElement("a");
+      link.href = image;
+      link.download = "Pain..T.png"; // Set desired file name
+      link.click();
+    } catch (error) {
+      console.error("Failed to save image:", error);
+    }
+  };
+
   return (
     <div
       style={{
@@ -43,14 +64,14 @@ const SettingsPanel = ({
         }}
       >
         Theme
-        <FontAwesomeIcon icon={theme == "light" ? "sun" : "moon"} />
+        <FontAwesomeIcon icon={theme === "light" ? "sun" : "moon"} />
       </button>
 
       <label className="unselectable">Dysfunctional Frequency</label>
       <Range
         step={1}
         min={1}
-        max={100}
+        max={60}
         values={[dysfunctionalModifier]}
         onChange={(values) => setValues?.(values)}
         renderTrack={({ props, children }) => (
@@ -60,8 +81,9 @@ const SettingsPanel = ({
               ...props.style,
               height: 13,
               width: "100%",
-
-              background: `linear-gradient(to right,#2f27ce ${dysfunctionalModifier}%,#e7e0ec ${dysfunctionalModifier}%,#e7e0ec 100% )`,
+              background: `linear-gradient(to right,#2f27ce ${
+                (dysfunctionalModifier / 60) * 100
+              }%,#e7e0ec ${(dysfunctionalModifier / 60) * 100}%,#e7e0ec 100% )`,
               borderRadius: 10,
             }}
           >
@@ -91,7 +113,7 @@ const SettingsPanel = ({
             console.log(event.target.checked);
             onPopupsChange?.(event.target.checked);
           }}
-        ></input>
+        />
       </div>
 
       <div
@@ -100,12 +122,11 @@ const SettingsPanel = ({
           alignItems: "stretch",
           display: "flex",
           gap: 10,
-
           padding: 5,
           borderRadius: 10,
         }}
       >
-        <label className="unselectable" style={{}}>
+        <label className="unselectable">
           Background Color
         </label>
         <input
@@ -118,19 +139,7 @@ const SettingsPanel = ({
 
       <div style={{ flex: 2 }}></div>
       <div style={{ justifyContent: "center", display: "flex" }}>
-        <button
-          id="saveImageButton"
-          onClick={() => {
-            const canvas = document.getElementById(
-              "canvas"
-            ) as HTMLCanvasElement;
-            const image = canvas
-              .toDataURL("image/png")
-              .replace("image/png", "image/octet-stream"); // here is the most important part because if you dont replace you will get a DOM 18 exception.
-
-            window.location.href = image;
-          }}
-        >
+        <button id="saveImageButton" onClick={handleSaveImage}>
           Save Image
         </button>
       </div>
