@@ -15,12 +15,10 @@ type Props = {
 
 const SettingsPanel = ({
   dysfunctionalModifier,
-  popups,
   backgroundColor,
   theme,
   setValues,
   onThemeButtonPressed,
-  onPopupsChange,
   onBackgroundColorChange,
 }: Props) => {
   const handleSaveImage = () => {
@@ -105,7 +103,7 @@ const SettingsPanel = ({
           />
         )}
       />
-      <div>
+      {/* Didn't have time to implement so removed<div>
         <label className="unselectable">Pop-ups</label>
         <input
           type="checkbox"
@@ -115,7 +113,7 @@ const SettingsPanel = ({
             onPopupsChange?.(event.target.checked);
           }}
         />
-      </div>
+      </div> */}
 
       <div
         className="secondary-container"
@@ -127,9 +125,7 @@ const SettingsPanel = ({
           borderRadius: 10,
         }}
       >
-        <label className="unselectable">
-          Background Color
-        </label>
+        <label className="unselectable">Background Color</label>
         <input
           type="color"
           className="colorPicker"
