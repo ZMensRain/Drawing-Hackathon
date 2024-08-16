@@ -1,9 +1,9 @@
-import { createContext } from "react";
+import React, { createContext } from "react";
 import { settings } from "../models/settings";
 
 type settingsContextType = {
   settings: settings;
-  setSettings: (settings: settings) => void;
+  setSettings: React.Dispatch<React.SetStateAction<settings>>;
 };
 
 export const settingsContext = createContext<settingsContextType>({
