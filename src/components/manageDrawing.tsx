@@ -15,21 +15,13 @@ const ManageDrawing = () => {
       isRandomizingOffset = true;
       setTimeout(() => {
         setOffset({
-          x:
-            Math.random() *
-              (settings.dysfunctionalModifier -
-                -settings.dysfunctionalModifier) +
-            -settings.dysfunctionalModifier,
-          y:
-            Math.random() *
-              (settings.dysfunctionalModifier -
-                -settings.dysfunctionalModifier) +
-            -settings.dysfunctionalModifier,
+          x: Math.random() * (5 - -5) + -5,
+          y: Math.random() * (5 - -5) + -5,
         });
-
         isRandomizingOffset = false;
-      }, (61 - settings.dysfunctionalModifier) * 1000);
+      }, (101 - settings.dysfunctionalModifier) * 1000);
     };
+
     function fn(e: MouseEvent) {
       const cRect = canvas.getBoundingClientRect();
       const canvasX = Math.round(e.clientX - cRect.left);
@@ -55,8 +47,10 @@ const ManageDrawing = () => {
     if (canvas !== null) {
       canvas.addEventListener("mousemove", fn);
     }
-    return () => canvas.removeEventListener("mousemove", fn);
-  }, [settings]);
+    return () => {
+      canvas.removeEventListener("mousemove", fn);
+    };
+  });
 
   //Updates background color when it is changed
   useEffect(() => {
