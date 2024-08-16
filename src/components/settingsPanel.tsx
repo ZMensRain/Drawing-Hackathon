@@ -1,5 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Range } from "react-range";
+import { faGithub } from "@fortawesome/free-brands-svg-icons";
 
 type props = {
   dysfunctionalModifier: number;
@@ -136,7 +137,33 @@ const SettingsPanel = ({
       </div>
 
       <h1>Credits</h1>
-      <div style={{ flex: 1 }}>TODO</div>
+      <div style={{ flex: 1 }}>
+        <a href="https://github.com/ZMensRain">
+          <FontAwesomeIcon
+            icon={faGithub}
+            style={{ alignSelf: "center" }}
+            fontSize={25}
+          />
+          ZMR
+        </a>
+
+        <a href="https://github.com/Enderneale">
+          <FontAwesomeIcon
+            icon={faGithub}
+            style={{ alignSelf: "center" }}
+            fontSize={25}
+          />
+          Enderneale
+        </a>
+        <a href="https://github.com/Eclypsis5133">
+          <FontAwesomeIcon
+            icon={faGithub}
+            style={{ alignSelf: "center" }}
+            fontSize={25}
+          />
+          Eclypsis
+        </a>
+      </div>
     </div>
   );
 };
