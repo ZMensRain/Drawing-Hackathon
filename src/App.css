@@ -118,7 +118,7 @@ a:hover {
 
 #brushSizeInput {
   border-radius: 10px;
-  border: 3px solid #eeeeee;
+  border: 1px solid var(--foreground);
   overflow: hidden;
 
   display: flex;
@@ -129,13 +129,13 @@ a:hover {
   box-sizing: border-box;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
-  background-color: #eeeeee;
+  background-color: var(--foreground);
   align-content: center;
   text-align: center;
   vertical-align: middle;
   min-width: 38px;
   font-size: 14px;
-  color: black;
+  color: var(--background);
   width: 100%;
 }
 
