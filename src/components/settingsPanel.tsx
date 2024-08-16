@@ -50,7 +50,7 @@ const SettingsPanel = ({
       <Range
         step={1}
         min={1}
-        max={60}
+        max={100}
         values={[dysfunctionalModifier]}
         onChange={(values) => setValues?.(values)}
         renderTrack={({ props, children }) => (
@@ -61,9 +61,7 @@ const SettingsPanel = ({
               height: 13,
               width: "100%",
 
-              background: `linear-gradient(to right,#2f27ce ${
-                (dysfunctionalModifier / 60) * 100
-              }%,#e7e0ec ${(dysfunctionalModifier / 60) * 100}%,#e7e0ec 100% )`,
+              background: `linear-gradient(to right,#2f27ce ${dysfunctionalModifier}%,#e7e0ec ${dysfunctionalModifier}%,#e7e0ec 100% )`,
               borderRadius: 10,
             }}
           >
